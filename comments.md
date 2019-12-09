@@ -3,6 +3,13 @@
 ```bash
 kubectl exec -it NameDelPod bash
 ```
+# Revisar detalles del pod
+
+```bash
+kubectl describe pod name_del_po
+```
+
+
 
 # Anotaciones Tutorial Kubernetes
 
@@ -13,7 +20,7 @@ Probando con:
  * Docker 18.09.9
 
 
-# Parar Alterar version  de kubernetes
+# Parar Alterar version  de kubernetes,memoria, procesador
 minikube start --memory 4000 --cpus 2 --kubernetes-version v1.11.10 
 
 
