@@ -12,11 +12,6 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
 
-    stage ("Log")
-    {
-        sh "echo $BUILDIMG"
-    }
-
     stage ("Build")
     {
         sh "docker build -t ${imageName} part1/hello-kenzan"
