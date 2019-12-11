@@ -12,22 +12,22 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
 
-    stage "Build"
+    stage ('Build')
     {
         steps{
-            sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan";
+            sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan"
             sh "echo $BUILDIMG"
         }
     }
     
     
-    stage "Push"
+    stage ('Push')
     {
         sh "docker push ${imageName}"
     }
 
 
-    stage "Deploy"
+    stage ('Deploy')
     {
         kubernetesDeploy configs: "applications/${appName}/k8s/*.yaml", kubeconfigId: 'kenzan_kubeconfig'
     }
