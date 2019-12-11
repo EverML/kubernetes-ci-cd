@@ -15,6 +15,7 @@ kubectl describe pod name_del_po
 
 
 Probando con:
+ * VirtualBox 5.2 (No funciona tan bien con la 6.0 por el tema de las IP's dinámicas)
  * Minikube 1.5.1
  * Kubernetes v1.16.2 
  * Docker 18.09.9

@@ -23,6 +23,10 @@ node {
         sh "docker push ${imageName}"
     }
 
+    stage ("Log")
+    {
+        sh "echo $BUILDIMG"
+    }
 
     stage ("Deploy")
     {

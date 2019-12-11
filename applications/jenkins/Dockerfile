@@ -1,9 +1,12 @@
 FROM jenkins/jenkins:2.138.4
+#FROM jenkins/jenkins:2.136 -- Para la instalación base usar este, y despues actualizar, por errores de plugin's
 USER root
 
 #Pre-Install Jenkins Plugins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
+
 
 #Installing Docker
 RUN apt-get update && apt-get install software-properties-common apt-transport-https ca-certificates -y; \
@@ -16,6 +19,11 @@ RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key a
 touch /etc/apt/sources.list.d/kubernetes.list;\
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list;\
 apt-get update && apt-get install -y kubectl
+
+#Install vim for debug stuff
+RUN apt-get install vim -y
+
+
 
 # Grant jenkins user group access to /var/run/docker.sock
 RUN addgroup --gid 1001 dsock
