@@ -12,13 +12,10 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
 
-   
-        
-    
     stage "Build"
     {
         steps{
-            sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan"
+            sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan";
             sh "echo $BUILDIMG"
         }
     }
