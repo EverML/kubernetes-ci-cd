@@ -32,8 +32,7 @@ node {
     stage ('Deploy')
     {
         kubernetesDeploy(
-         configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig',
-         secretName:"${imageName}"
+         configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig'
         )    
     }
 
